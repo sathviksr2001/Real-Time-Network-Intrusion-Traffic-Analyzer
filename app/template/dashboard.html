@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Network Analyzer</title>
+    <script>
+        async function updateData() {
+            const res = await fetch('/data');
+            const data = await res.json();
+            document.getElementById("total").innerText = data.total_packets;
+            document.getElementById("anomaly").innerText = data.anomalies;
+        }
+        setInterval(updateData, 1000);
+    </script>
+</head>
+<body>
+    <h1>Smart Network Traffic Dashboard</h1>
+    <p>Total Packets: <span id="total">0</span></p>
+    <p>Anomalies Detected: <span id="anomaly">0</span></p>
+</body>
+</html>
